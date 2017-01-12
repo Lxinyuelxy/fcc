@@ -20,6 +20,7 @@ $(document).ready(function(){
          // var seperator = '+' || '-' || '*' || '/' || '=';
           inputStr = inputStr.slice(0, inputStr.length - 1);
           var res = eval(inputStr);
+          res = res.toFixed(10);
           console.log(typeof res);
           console.log("res = " + res);
           showNumber(res);

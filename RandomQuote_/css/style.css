@@ -1,0 +1,33 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background-color:#B1165C;
+}
+#content{
+	background-color:#fff;
+	position:relative;
+	margin:8% auto 2% auto;
+	width:450px;
+	border-radius:5px;
+	
+}
+.quto-text{
+	margin:8% 8% 3% 8%;
+	padding:1%;
+	clear:both;
+	font-family:"微软雅黑";
+	font-size:160%;
+}
+#author{
+	font-family:"微软雅黑";
+	font-size:120%;
+}
+.row {
+    margin:3% 8%;
+}
+.btn{	
+	height:38px;
+	margin:0 0 5% 0;
+}
