@@ -17,7 +17,6 @@ $(document).ready(function(){
 
       }
       if(isEqualSign($(this).val())){
-         // var seperator = '+' || '-' || '*' || '/' || '=';
           inputStr = inputStr.slice(0, inputStr.length - 1);
           var res = eval(inputStr);
           res = res.toFixed(10);
@@ -25,8 +24,6 @@ $(document).ready(function(){
           console.log("res = " + res);
           showNumber(res);
           inputStr = '';
-        //   var arrayOfStrings = inputStr.split(seperator);
-        //   console.log(arrayOfStrings[0] + ','+ arrayOfStrings[1]);
       }
       if($(this).val() === 'ac'){
           inputStr = '';
