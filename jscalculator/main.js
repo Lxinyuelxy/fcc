@@ -3,33 +3,40 @@ var numStr = '';
 
 $(document).ready(function(){
   $('button').click(function() {
-      inputStr += $(this).val();
-      showInput(inputStr);
-
+      if($(this).val() !== 'ce'){
+          inputStr += $(this).val();
+          showInput(inputStr);
+      }
       if(isNumber($(this).val())){
           numStr += $(this).val();
           showNumber(numStr);
-          console.log(numStr);
       }
       if(isOperationSign($(this).val())){
           numStr = '';
-          showNumber(0);
-
       }
       if(isEqualSign($(this).val())){
           inputStr = inputStr.slice(0, inputStr.length - 1);
           var res = eval(inputStr);
-          res = res.toFixed(10);
-          console.log(typeof res);
-          console.log("res = " + res);
+          if(confirmDigits(res) > 10){
+              res = res.toFixed(10);
+          }
           showNumber(res);
           inputStr = '';
+          numStr = '';
       }
       if($(this).val() === 'ac'){
           inputStr = '';
           numStr = '';
           showNumber('0');
           showInput('0');
+      }
+      if($(this).val() === 'ce'){
+         while( isNumber(inputStr[inputStr.length-1]) ){
+              inputStr = inputStr.slice(0, -1);
+         }
+          numStr = '';
+          showNumber('0');
+          showInput(inputStr);
       }
   });
 });
@@ -42,8 +49,18 @@ function showNumber(numStr){
     $('#answer').text(numStr);
 }
 
+function confirmDigits(res){
+    if(res.toString().split(".")[1] === undefined){
+        return 0;
+    }
+    else{
+        return res.toString().split(".")[1].length;
+    }
+    
+}
+
 function isNumber(value){
-    return value >= 0 && value <= 9;
+    return value >= 0 && value <= 9 || value === '.';
 }
 
 function isOperationSign(value){
